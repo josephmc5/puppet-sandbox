@@ -1,0 +1,14 @@
+:backends:
+  - yaml
+  - puppet
+
+:logger: console
+
+:hierarchy:
+  - common
+
+:yaml:
+   :datadir: /vagrant/hieradata
+
+:puppet:
+   :datasource: data

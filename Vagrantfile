@@ -6,7 +6,7 @@ domain = 'example.com'
 Vagrant::Config.run do |config|
   config.vm.define :master do |master_config|
     master_config.vm.box = 'lucid32'
-#    master_config.vm.box_url = 'http://yum.mnxsolutions.com/vagrant/centos57_64.box'
+    master_config.vm.box_url = 'http://files.vagrantup.com/lucid32.box'
     master_config.vm.host_name = "puppet.#{domain}"
     master_config.vm.network :hostonly, '172.16.32.10'
 
@@ -17,8 +17,8 @@ Vagrant::Config.run do |config|
   end
 
   config.vm.define :client1 do |client_config|
-    client_config.vm.box = 'lucid32'
-#    client_config.vm.box_url = 'http://yum.mnxsolutions.com/vagrant/centos57_64.box'
+    client_config.vm.box = 'lucid64'
+    client_config.vm.box_url = 'http://files.vagrantup.com/lucid64.box'
     client_config.vm.host_name = "client1.#{domain}"
     client_config.vm.network :hostonly, '172.16.32.11'
 
