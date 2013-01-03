@@ -1,6 +1,6 @@
 # == Class: puppet::server
 #
-# This class installs and manages the Puppet server daemon. 
+# This class installs and manages the Puppet server daemon.
 #
 # === Parameters
 #
@@ -16,6 +16,7 @@
 # === Actions
 #
 # - Install Puppet server package
+# - Install puppet-lint gem
 # - Configure Puppet to autosign puppet client certificate requests
 # - Configure Puppet to use nodes.pp and modules from /vagrant directory
 # - Ensure puppet-master daemon is running
@@ -27,7 +28,7 @@
 #   class { 'puppet::server': }
 #
 #   class { 'puppet::server':
-#     ensure => '2.6.8-0.5.el5',
+#     ensure => 'puppet-2.7.17-1.el6',
 #   }
 #
 class puppet::server(
@@ -45,6 +46,11 @@ class puppet::server(
   package { 'puppetmaster':
     ensure => $ensure,
     name   => $package_name,
+  }
+
+  package { 'puppet-lint':
+    ensure   => latest,
+    provider => gem,
   }
 
   file { 'puppet.conf':

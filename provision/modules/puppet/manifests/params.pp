@@ -1,6 +1,6 @@
 # == Class: puppet::params
 #
-# This class manages the Puppet parameters. 
+# This class manages the Puppet parameters.
 #
 # === Parameters
 #
@@ -17,11 +17,11 @@ class puppet::params {
   $client_ensure = 'latest'
   $server_ensure = 'latest'
 
-  case $::operatingsystem {
-    'centos', 'fedora', 'redhat', 'scientific': {
+  case $::osfamily {
+    'redhat': {
       $server_package_name = 'puppet-server'
     }
-    'debian', 'ubuntu': {
+    'debian': {
       $server_package_name = 'puppetmaster'
     }
     default: {
